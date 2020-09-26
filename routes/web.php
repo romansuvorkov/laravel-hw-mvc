@@ -45,7 +45,7 @@ Route::get('/create', function () {
     $stratocaster = Guitar::where('model', 'Stratocaster')->get()->toArray();
     $kala = Guitar::where('model', 'Kala MK-S')->get()->toArray();
     $f310 = Guitar::where('model', 'F310')->get()->toArray();
-
+    
     echo 'Товар ID ' . $stratocaster[0]['id'] . ' ' . $stratocaster[0]['brand'] . ' ' .$stratocaster[0]['model'] . ' успешно добавлен' . '<br>';
     echo 'Товар ID ' . $kala[0]['id'] . ' ' . $kala[0]['brand'] . ' ' .$kala[0]['model'] . ' успешно добавлен' . '<br>';
     echo 'Товар ID' . $f310[0]['id'] . ' ' . $f310[0]['brand'] . ' ' .$f310[0]['model'] . ' успешно добавлен' . '<br>';
@@ -53,11 +53,10 @@ Route::get('/create', function () {
 
 
 Route::get('/show', function () {
-    $guitars = Guitar::where('id', 6)->get()->toArray();
-    $guitarType = GuitarType::where('id', $guitars[0]['type_id'])->get()->toArray();
-    echo 'ID Товара - ' . $guitars[0]['id'] . '<br>';
-    echo 'Бренд - ' . $guitars[0]['brand'] . '<br>';
-    echo 'Модель - ' . $guitars[0]['model'] . '<br>';
-    echo 'Тип - ' . $guitarType[0]['name'] . '<br>';
-    echo 'Цена - ' . $guitars[0]['price'] . 'руб.' . '<br>';
+    $guitars = Guitar::where('id', 6)->get();
+    echo 'ID Товара - ' . $guitars[0]->id . '<br>';
+    echo 'Бренд - ' . $guitars[0]->brand . '<br>';
+    echo 'Модель - ' . $guitars[0]->model . '<br>';
+    echo 'Тип - ' . $guitars[0]->guitarType->name . '<br>';
+    echo 'Цена - ' . $guitars[0]->price . ' руб.' . '<br>';
 });

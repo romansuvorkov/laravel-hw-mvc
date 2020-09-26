@@ -18,7 +18,7 @@ class Guitar extends Model
 
     public function guitarType()
     {
-        return $this->hasMany(GuitarType::class, 'id', 'type_id');
+        return $this->hasOne(GuitarType::class, 'id', 'type_id');
     }
 
 }
